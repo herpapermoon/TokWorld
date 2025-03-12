@@ -89,5 +89,8 @@
     <ClInclude Include="MapManager.h">
       <Filter>头文件\Managers</Filter>
     </ClInclude>
+    <ClInclude Include="machine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

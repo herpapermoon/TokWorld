@@ -5,7 +5,7 @@
 
 #include <chrono>
 #include <thread>
-#include "GlobalManagers.h"
+
 
 
 void setup_imgui_fonts() {
@@ -52,8 +52,7 @@ int main() {
 
     setup_imgui(window);
 
-    // 设置初始场景为主菜单
-    SceneManager::instance()->switch_to(SceneType::Menu);
+
 
     const nanoseconds frame_duration(1000000000 / 60);
     steady_clock::time_point last_tick = steady_clock::now();
@@ -65,21 +64,17 @@ int main() {
         duration<float> real_delta = duration<float>(frame_start - last_tick);
         last_tick = frame_start;
 
-        // 更新游戏时间管理器
-        GameTimeManager::instance()->update(real_delta.count());
+
 
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        // 更新场景和输入
-        SceneManager::instance()->on_input(window);
-        SceneManager::instance()->on_update();
+
 
         glClear(GL_COLOR_BUFFER_BIT);
 
-        // 绘制场景
-        SceneManager::instance()->on_draw();
+   
 
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
